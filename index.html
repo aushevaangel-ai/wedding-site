@@ -74,7 +74,7 @@
       position:relative;
       width:min(720px, 92vw);
       margin:0 auto;
-      padding: 8px 0;
+      padding: 10px 0 10px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -89,11 +89,13 @@
     }
     .brand small{ color:var(--muted); font-size:11.5px; }
 
+    /* NAV chips */
     .chips{
       display:flex;
       gap:8px;
       flex-wrap:wrap;
       justify-content:flex-end;
+      align-items:center;
     }
 
     /* Кнопки меню */
@@ -115,16 +117,46 @@
       transform: translateY(-1px);
     }
 
-    @media (max-width: 520px){
-      .brand b{ font-size: 16px; }
+    /* ✅ ВАРИАНТ 1: на мобилке лента со свайпом, 100% ширины (ничего не пропадает) */
+    @media (max-width: 560px){
+      .topbar-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+        padding: 10px 0 12px;
+      }
       .chips{
+        width:100%;
         flex-wrap:nowrap;
         overflow-x:auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        max-width: 70vw;
+        justify-content:flex-start;
+        padding-bottom: 2px;
+        position:relative;
       }
       .chips::-webkit-scrollbar{ display:none; }
+
+      /* мягкие “края”, чтобы было видно что можно свайпать */
+      .chips::before,
+      .chips::after{
+        content:"";
+        position:sticky;
+        top:0;
+        width:18px;
+        height:36px;
+        flex:0 0 18px;
+        pointer-events:none;
+      }
+      .chips::before{
+        left:0;
+        background: linear-gradient(90deg, rgba(251,250,248,.95), rgba(251,250,248,0));
+      }
+      .chips::after{
+        right:0;
+        background: linear-gradient(270deg, rgba(251,250,248,.95), rgba(251,250,248,0));
+      }
+
       .chip{ flex:0 0 auto; }
     }
 
@@ -147,7 +179,7 @@
     .hero .script{
       font-family:var(--script);
       font-size: 30px;
-      color: rgba(15,16,15,.88);
+      color: rgba(15,16,15,.92);
       margin:0 0 6px;
       text-shadow: 0 1px 0 rgba(255,255,255,.55);
     }
@@ -208,6 +240,10 @@
     .btn.primary{
       background: linear-gradient(135deg, rgba(199,210,198,.55), rgba(205,191,232,.40));
       border-color: rgba(127,142,110,.20);
+    }
+    .btn.secondary{
+      background: rgba(232, 225, 246, 0.55);
+      border-color: rgba(160, 185, 170, 0.25);
     }
 
     /* ===== Frames / cards ===== */
@@ -326,18 +362,9 @@
       font-size: 13px;
     }
 
-    /* ===== Memo (Памятка) ===== */
-    .memo-wrap{
-      display:grid;
-      gap:12px;
-      margin-top: 10px;
-    }
-    .memo-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
+    /* ===== Memo ===== */
+    .memo-wrap{ display:grid; gap:12px; margin-top: 10px; }
+    .memo-actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
     .memo-img{
       width:100%;
       height:auto;
@@ -345,10 +372,6 @@
       border:1px solid rgba(31,35,33,.10);
       box-shadow: 0 18px 40px rgba(0,0,0,.10);
       background: rgba(255,255,255,.5);
-    }
-    .btn.secondary{
-      background: rgba(232, 225, 246, 0.55);
-      border-color: rgba(160, 185, 170, 0.25);
     }
 
     .footer{ margin-top: 16px; text-align:center; color: var(--muted); font-size: 12px; }
@@ -519,16 +542,16 @@
     <section id="memo" class="framed" style="background-image:url('./frame-invitation.png')">
       <div class="veil">
         <div class="h2">Памятка для гостей</div>
-        <p class="text">Чтобы путешествие было комфортным — сохрани себе чек-лист. Можно посмотреть здесь или скачать.</p>
+        <p class="text">Можно посмотреть здесь или скачать себе 🤍</p>
 
         <div class="memo-wrap">
           <div class="memo-actions">
-            <a class="btn secondary" href="./memo.png" download="Памятка_для_гостей_Анжела_Евгений.png">Скачать PNG</a>
+            <a class="btn secondary" href="./memo.png" download="Памятка_для_гостей_Евгений_Анжела.png">Скачать PNG</a>
             <button class="btn primary" type="button" onclick="downloadMemoPDF()">Скачать PDF</button>
           </div>
 
           <img class="memo-img" src="./memo.png" alt="Памятка для гостей — Евгений и Анжела, Батуми">
-          <div class="hint">Подсказка: PDF откроется через «Печать» → «Сохранить как PDF» (это нормально для телефона и компьютера).</div>
+          <div class="hint">PDF откроется через «Печать» → «Сохранить как PDF» (это нормально для телефона и компьютера).</div>
         </div>
       </div>
     </section>
