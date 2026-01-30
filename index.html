@@ -35,32 +35,32 @@
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
-   body{
-  margin:0;
-  background:
-    radial-gradient(1200px 800px at 50% -15%,
-      rgba(245, 236, 255, 0.55),
-      transparent 60%),
-    radial-gradient(1000px 700px at 15% 20%,
-      rgba(228, 242, 235, 0.65),
-      transparent 55%),
-    radial-gradient(900px 600px at 85% 30%,
-      rgba(243, 238, 230, 0.8),
-      transparent 60%),
-    linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #fdfaf7 40%,
-      #fbf7f2 100%
-    );
-  color:var(--ink);
-  font-family:var(--sans);
-  line-height:1.5;
-}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 800px at 50% -15%,
+          rgba(245, 236, 255, 0.55),
+          transparent 60%),
+        radial-gradient(1000px 700px at 15% 20%,
+          rgba(228, 242, 235, 0.65),
+          transparent 55%),
+        radial-gradient(900px 600px at 85% 30%,
+          rgba(243, 238, 230, 0.8),
+          transparent 60%),
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #fdfaf7 40%,
+          #fbf7f2 100%
+        );
+      color:var(--ink);
+      font-family:var(--sans);
+      line-height:1.5;
+    }
     a{ color:inherit; }
     .wrap{ width:min(720px, 92vw); margin:0 auto; padding: 14px 0 56px; }
 
-    /* ===== TOPBAR (компактнее, “дороже”, с акварельным декором) ===== */
+    /* ===== TOPBAR ===== */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -106,23 +106,32 @@
       flex-wrap:wrap;
       justify-content:flex-end;
     }
-    .chip{
-     font-size:12px;
-  padding:8px 14px;
-  border-radius:999px;
-  background: rgba(232, 225, 246, 0.55); /* лаванда */
-  border:1px solid rgba(160, 185, 170, 0.35); /* зелёный */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color:#3a3a3a;
-  text-decoration:none;
-  white-space:nowrap;
-  box-shadow: 0 6px 18px rgba(90, 70, 130, 0.14);
-  transition: all .25s ease;
-}
-    .chip:active{ transform: translateY(1px); }
 
-    /* мобильный скролл меню, чтобы не ломалось и не “съедало” место */
+    /* ✅ кнопки меню НЕ белые */
+    .chip{
+      font-size:12px;
+      padding:8px 14px;
+      border-radius:999px;
+      background: rgba(232, 225, 246, 0.55); /* лаванда */
+      border:1px solid rgba(160, 185, 170, 0.35); /* зелёный */
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color:#3a3a3a;
+      text-decoration:none;
+      white-space:nowrap;
+      box-shadow: 0 6px 18px rgba(90, 70, 130, 0.14);
+      transition: all .25s ease;
+    }
+    .chip:hover{
+      background: rgba(220, 210, 240, 0.7);
+      transform: translateY(-1px);
+    }
+    .chip:active{
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(80, 60, 120, 0.18);
+    }
+
+    /* мобильный скролл меню */
     @media (max-width: 520px){
       .wrap{ padding-top: 12px; }
       .brand b{ font-size: 15px; }
@@ -139,6 +148,7 @@
 
     /* ===== Cards / frames ===== */
     section{ margin-top: 14px; }
+
     .card{
       background: rgba(255,255,255,0.82);
       border:1px solid rgba(255,255,255,.70);
@@ -148,18 +158,30 @@
       position:relative;
     }
 
+    /* ✅ ВАЖНО: возвращаем cover, чтобы НЕ было пустых зон */
     .framed{
-     border-radius: var(--radius);
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: contain;
-}
+      border-radius: var(--radius);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    /* контент поверх рамки */
     .veil{
-      background: linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.56));
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.58));
       border:1px solid rgba(255,255,255,.70);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 18px;
+    }
+
+    /* ✅ мобильный фикс рамок */
+    @media (max-width: 520px){
+      .framed{ background-position: center 12%; }
+      .veil{ padding: 16px; }
     }
 
     /* ===== HERO ===== */
@@ -175,11 +197,14 @@
       background-position: 50% 40%;
     }
     .hero-inner{ padding: 54px 16px 22px; text-align:center; }
+
+    /* ✅ Our day теперь ТЁМНЫЙ, чтобы было видно */
     .hero .script{
       font-family:var(--script);
       font-size: 30px;
-      color: rgba(142,120,168,.95);
+      color: rgba(15,16,15,.88);
       margin:0 0 6px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.55);
     }
     .hero h1{
       font-family:var(--serif);
