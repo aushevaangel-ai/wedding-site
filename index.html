@@ -2,13 +2,13 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Евгений ♡ Анжела — 11.07.2026 — Батуми</title>
   <meta name="description" content="Свадебное приглашение: Евгений и Анжела. 11.07.2026, Батуми." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -20,7 +20,7 @@
       --shadow: 0 16px 44px rgba(15,18,16,.12);
       --radius: 22px;
 
-      /* палитра кружочков (без названий) */
+      /* палитра кружочков */
       --g1:#A9B7A6;
       --g2:#C7D2C6;
       --g3:#7F8E6E;
@@ -28,9 +28,8 @@
       --p2:#C3B0E0;
       --p3:#B6A0C8;
 
-      --serif:"Playfair Display", ui-serif, Georgia, serif;
+      --serif:"Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
       --sans:"Manrope", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      --script:"Great Vibes", cursive;
     }
 
     *{ box-sizing:border-box; }
@@ -38,8 +37,8 @@
     body{
       margin:0;
       background:
-        radial-gradient(1100px 700px at 50% -10%, rgba(205,191,232,.30), transparent 60%),
-        radial-gradient(1100px 700px at 20% 10%, rgba(199,210,198,.32), transparent 60%),
+        radial-gradient(1100px 700px at 50% -10%, rgba(205,191,232,.25), transparent 60%),
+        radial-gradient(1100px 700px at 20% 10%, rgba(199,210,198,.28), transparent 60%),
         linear-gradient(180deg, #ffffff, var(--bg));
       color:var(--ink);
       font-family:var(--sans);
@@ -47,99 +46,98 @@
     }
 
     a{ color:inherit; }
-    .wrap{ width:min(720px, 92vw); margin:0 auto; padding: 14px 0 56px; }
+    .wrap{ width:min(720px, 92vw); margin:0 auto; padding: 12px 0 56px; }
 
-    /* TOPBAR */
+    /* TOPBAR (фикс для iPhone/Telegram: safe-area + две строки) */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(251,250,248,.70);
+      background: rgba(251,250,248,.82);
       border-bottom:1px solid var(--line);
-      overflow:hidden;
+      padding-top: env(safe-area-inset-top);
     }
     .topbar::before{
       content:"";
       position:absolute;
       inset:-18px;
       background:
-        radial-gradient(900px 320px at 20% 0%, rgba(205,191,232,.22), transparent 60%),
-        radial-gradient(900px 320px at 80% 0%, rgba(199,210,198,.24), transparent 62%),
+        radial-gradient(900px 320px at 20% 0%, rgba(205,191,232,.18), transparent 60%),
+        radial-gradient(900px 320px at 80% 0%, rgba(199,210,198,.20), transparent 62%),
         url("./hero-mobile.png");
       background-size: cover;
       background-position: 50% 35%;
       filter: blur(10px) saturate(1.05);
-      opacity: .18;
+      opacity: .14;
       pointer-events:none;
     }
     .topbar-inner{
       position:relative;
       width:min(720px, 92vw);
       margin:0 auto;
-      padding: 8px 0;
+      padding: 10px 0 10px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
     }
+
     .brand{
       display:flex;
       flex-direction:column;
-      line-height:1.1;
-      min-width: 160px;
+      line-height:1.15;
+      min-width: 170px;
     }
     .brand b{
       font-family:var(--serif);
-      letter-spacing:.2px;
+      letter-spacing:.25px;
       font-size: 18px;
     }
     .brand small{
       color:var(--muted);
       font-size:12px;
     }
+
     .chips{
       display:flex;
       gap:8px;
       flex-wrap:wrap;
       justify-content:flex-end;
-      max-width: 460px;
     }
     .chip{
       font-size:12px;
       padding:8px 10px;
       border-radius:999px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.72);
-      color:rgba(31,35,33,.78);
+      background: rgba(255,255,255,.80);
+      color:rgba(31,35,33,.84);
       text-decoration:none;
       white-space:nowrap;
       box-shadow: 0 10px 22px rgba(0,0,0,.05);
     }
-    .chip:active{ transform: translateY(1px); }
 
+    /* ВАЖНО: на мобиле шапку делаем в 2 строки, чтобы ничего не съедалось */
     @media (max-width: 520px){
+      .topbar-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+      }
+      .brand{ min-width: unset; }
       .chips{
+        width:100%;
+        justify-content:flex-start;
         flex-wrap:nowrap;
         overflow-x:auto;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        max-width: 58vw;
+        scrollbar-width:none;
         padding-bottom: 2px;
       }
       .chips::-webkit-scrollbar{ display:none; }
       .chip{ flex: 0 0 auto; }
-      .brand b{ font-size: 17px; }
     }
 
     /* SECTION BASE */
     section{ margin-top: 14px; }
-    .card{
-      background: var(--card);
-      border:1px solid rgba(255,255,255,.70);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
 
     /* FRAMED BLOCKS */
     .framed{
@@ -148,7 +146,7 @@
       border-radius: var(--radius);
     }
     .veil{
-      background: linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.56));
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.58));
       border:1px solid rgba(255,255,255,.70);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -162,28 +160,36 @@
       box-shadow: var(--shadow);
       border:1px solid rgba(255,255,255,.75);
       background:
-        linear-gradient(180deg, rgba(255,255,255,.35) 0%, rgba(255,255,255,.05) 45%, rgba(255,255,255,.45) 100%),
+        linear-gradient(180deg, rgba(255,255,255,.30) 0%, rgba(255,255,255,.05) 45%, rgba(255,255,255,.40) 100%),
         url("./hero-mobile.png");
       background-size: cover;
       background-position: 50% 40%;
     }
     .hero-inner{
-      padding: 56px 16px 22px;
+      padding: 54px 16px 22px;
       text-align:center;
     }
+
+    /* СДЕЛАЛИ НАДПИСЬ ЧЁРНОЙ (не фиолетовой) */
     .hero .script{
-      font-family:var(--script);
-      font-size: 30px;
-      color: rgba(142,120,168,.95);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 18px;
+      color: rgba(31,35,33,.85);
       margin:0 0 6px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.6);
     }
+
+    /* ИМЕНА — красивый “дорогой” стиль даже на запасном шрифте */
     .hero h1{
-      font-family:var(--serif);
+      font-family: var(--serif);
       font-size: clamp(34px, 7vw, 52px);
-      letter-spacing:.3px;
+      font-weight: 700;
+      letter-spacing: .6px;
       margin: 0 0 6px;
       text-shadow: 0 1px 0 rgba(255,255,255,.7);
     }
+
     .hero p{
       margin:0;
       color:var(--muted);
@@ -200,11 +206,11 @@
     .pill{
       padding:10px 12px;
       border-radius:999px;
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(255,255,255,.85);
+      background: rgba(255,255,255,.82);
+      border:1px solid rgba(255,255,255,.88);
       backdrop-filter: blur(10px);
       font-size: 13px;
-      color: rgba(31,35,33,.74);
+      color: rgba(31,35,33,.78);
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
     }
 
@@ -218,7 +224,7 @@
     .btn{
       cursor:pointer;
       border: 1px solid rgba(0,0,0,.06);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.88);
       padding: 12px 16px;
       border-radius: 999px;
       font-weight: 700;
@@ -227,9 +233,8 @@
       box-shadow: 0 12px 28px rgba(0,0,0,.08);
       transition: transform .15s ease, box-shadow .15s ease;
     }
-    .btn:hover{ transform: translateY(-1px); box-shadow: 0 16px 36px rgba(0,0,0,.10); }
     .btn.primary{
-      background: linear-gradient(135deg, rgba(199,210,198,.55), rgba(205,191,232,.40));
+      background: linear-gradient(135deg, rgba(199,210,198,.55), rgba(205,191,232,.35));
       border-color: rgba(127,142,110,.20);
     }
 
@@ -260,7 +265,7 @@
       padding: 12px;
       border-radius: 16px;
       border:1px solid rgba(31,35,33,.10);
-      background: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.74);
     }
     .t-time{
       min-width: 96px;
@@ -283,7 +288,7 @@
       width: 34px;
       height: 34px;
       border-radius: 999px;
-      border:1px solid rgba(255,255,255,.85);
+      border:1px solid rgba(255,255,255,.88);
       box-shadow: 0 10px 22px rgba(0,0,0,.08);
     }
 
@@ -304,7 +309,7 @@
       padding: 12px 12px;
       border-radius: 14px;
       border:1px solid rgba(31,35,33,.12);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.84);
       font: inherit;
       outline:none;
     }
@@ -332,13 +337,13 @@
       font-size: 13px;
     }
 
-    /* GUIDE: accordion */
+    /* GUIDE: accordion (сделали выразительнее) */
     .accordion{ display:grid; gap:10px; margin-top:12px; }
 
     .acc{
       border:1px solid rgba(31,35,33,.10);
       border-radius: 18px;
-      background: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.76);
       overflow:hidden;
     }
     .acc[open]{ box-shadow: 0 14px 32px rgba(0,0,0,.06); }
@@ -348,35 +353,41 @@
       display:flex;
       align-items:center;
       gap:10px;
-      padding: 12px 12px;
+      padding: 14px 12px;
       cursor:pointer;
       user-select:none;
     }
     .acc-sum::-webkit-details-marker{ display:none; }
 
+    /* ИКОНКИ — крупнее, темнее, заметнее */
     .acc-icon{
-      width: 34px; height: 34px;
+      width: 40px; height: 40px;
       border-radius: 999px;
       display:grid;
       place-items:center;
-      background: linear-gradient(135deg, rgba(199,210,198,.55), rgba(205,191,232,.40));
-      border:1px solid rgba(31,35,33,.08);
-      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      background: linear-gradient(135deg, rgba(199,210,198,.70), rgba(205,191,232,.55));
+      border:1px solid rgba(31,35,33,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
       flex: 0 0 auto;
     }
-    .acc-icon svg{ width: 18px; height: 18px; color: rgba(31,35,33,.78); }
-
-    .acc-sum b{ font-family: var(--serif); letter-spacing:.2px; }
+    .acc-icon svg{ width: 20px; height: 20px; color: rgba(31,35,33,.92); }
+    .acc-sum b{ font-family: var(--serif); letter-spacing:.2px; font-size: 16px; }
     .acc-sub{
       display:block;
       font-size: 12px;
       color: rgba(31,35,33,.62);
-      margin-top: 1px;
+      margin-top: 2px;
+    }
+
+    .acc-badge{
+      margin-left: 6px;
+      font-size: 16px;
+      opacity: .9;
     }
 
     .acc-caret{
       margin-left:auto;
-      color: rgba(31,35,33,.55);
+      color: rgba(31,35,33,.62);
       transition: transform .18s ease;
       font-size: 16px;
     }
@@ -402,7 +413,7 @@
       border-radius: 14px;
       border:1px solid rgba(127,142,110,.18);
       background: rgba(199,210,198,.25);
-      color: rgba(31,35,33,.78);
+      color: rgba(31,35,33,.80);
       font-style: italic;
     }
 
@@ -423,6 +434,7 @@
         <b>Евгений ♡ Анжела</b>
         <small>11.07.2026 · Батуми</small>
       </div>
+
       <div class="chips">
         <a class="chip" href="#schedule">Расписание</a>
         <a class="chip" href="#dress">Дресс-код</a>
@@ -495,8 +507,6 @@
     <section id="dress" class="framed" style="background-image:url('./frame-dresscode.png')">
       <div class="veil">
         <div class="h2">Дресс-код</div>
-        <p class="text">Будем рады, если вы поддержите нашу палитру 💚💜</p>
-
         <div class="dots" aria-label="Цветовая палитра">
           <span class="dot" style="background:var(--g1)"></span>
           <span class="dot" style="background:var(--g2)"></span>
@@ -522,12 +532,12 @@
             <summary class="acc-sum">
               <span class="acc-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M9 18l-6 2V6l6-2 6 2 6-2v14l-6 2-6-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                  <path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M9 18l-6 2V6l6-2 6 2 6-2v14l-6 2-6-2z" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/>
+                  <path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/>
                 </svg>
               </span>
               <span>
-                <b>Что посмотреть</b>
+                <b>Что посмотреть</b><span class="acc-badge">🗺️</span>
                 <span class="acc-sub">маршруты, виды, природа</span>
               </span>
               <span class="acc-caret" aria-hidden="true">▾</span>
@@ -557,14 +567,14 @@
             <summary class="acc-sum">
               <span class="acc-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M7 3v8M10 3v8M7 7h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                  <path d="M14 3v7c0 1.1.9 2 2 2v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                  <path d="M20 3v9c-1.1 0-2-.9-2-2V3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                  <path d="M5 21h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M7 3v8M10 3v8M7 7h3" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/>
+                  <path d="M14 3v7c0 1.1.9 2 2 2v9" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/>
+                  <path d="M20 3v9c-1.1 0-2-.9-2-2V3" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/>
+                  <path d="M5 21h14" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/>
                 </svg>
               </span>
               <span>
-                <b>Что обязательно попробовать</b>
+                <b>Что обязательно попробовать</b><span class="acc-badge">🍽️</span>
                 <span class="acc-sub">вкус Грузии</span>
               </span>
               <span class="acc-caret" aria-hidden="true">▾</span>
@@ -628,7 +638,7 @@
 
           <div>
             <label for="notes">Комментарий (пожелания / аллергии)</label>
-            <textarea id="notes" name="notes" placeholder="Например: не ем рыбу, аллергия на орехи…"></textarea>
+            <textarea id="notes" name="notes" placeholder="Например: аллергия на орехи…"></textarea>
           </div>
 
           <input type="hidden" name="_subject" value="RSVP — Евгений ♡ Анжела (11.07.2026)" />
