@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Евгений & Анжела — 11.07.2026 — Батуми</title>
+  <title>Евгений ♡ Анжела — 11.07.2026 — Батуми</title>
   <meta name="description" content="Свадебное приглашение: Евгений и Анжела. 11.07.2026, Батуми." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,13 +20,13 @@
       --shadow: 0 16px 44px rgba(15,18,16,.12);
       --radius: 22px;
 
-      /* палитра кружочков (без названий на сайте) */
-      --g1:#A9B7A6; /* sage */
-      --g2:#C7D2C6; /* eucalyptus */
-      --g3:#7F8E6E; /* olive */
-      --p1:#CDBFE8; /* lavender */
-      --p2:#C3B0E0; /* lilac */
-      --p3:#B6A0C8; /* mauve */
+      /* кружочки дресс-кода (без названий) */
+      --g1:#A9B7A6;
+      --g2:#C7D2C6;
+      --g3:#7F8E6E;
+      --p1:#CDBFE8;
+      --p2:#C3B0E0;
+      --p3:#B6A0C8;
 
       --serif:"Playfair Display", ui-serif, Georgia, serif;
       --sans:"Manrope", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -45,45 +45,84 @@
       font-family:var(--sans);
       line-height:1.5;
     }
-
     a{ color:inherit; }
-    .wrap{ width:min(720px, 92vw); margin:0 auto; padding: 18px 0 56px; }
+    .wrap{ width:min(720px, 92vw); margin:0 auto; padding: 14px 0 56px; }
 
-    /* top mini-nav (mobile friendly) */
+    /* ===== TOPBAR (компактнее, “дороже”, с акварельным декором) ===== */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(251,250,248,.78);
+      background: rgba(251,250,248,.70);
       border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+    .topbar::before{
+      content:"";
+      position:absolute;
+      inset:-18px;
+      background:
+        radial-gradient(900px 320px at 18% 0%, rgba(205,191,232,.22), transparent 60%),
+        radial-gradient(900px 320px at 82% 0%, rgba(199,210,198,.24), transparent 62%),
+        url("./hero-mobile.png");
+      background-size: cover;
+      background-position: 50% 35%;
+      filter: blur(10px) saturate(1.05);
+      opacity: .18;
+      pointer-events:none;
     }
     .topbar-inner{
+      position:relative;
       width:min(720px, 92vw);
       margin:0 auto;
-      padding: 10px 0;
+      padding: 8px 0;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
     }
-    .brand{
-      display:flex; flex-direction:column; line-height:1.1;
+    .brand{ display:flex; flex-direction:column; line-height:1.08; }
+    .brand b{
+      font-family:var(--serif);
+      letter-spacing:.2px;
+      font-size: 16px;
     }
-    .brand b{ font-family:var(--serif); letter-spacing:.2px; }
-    .brand small{ color:var(--muted); font-size:12px; }
-    .chips{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+    .brand small{ color:var(--muted); font-size:11.5px; }
+
+    .chips{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
     .chip{
       font-size:12px;
-      padding:8px 10px;
+      padding:7px 10px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.70);
+      border:1px solid rgba(31,35,33,.12);
+      background: rgba(255,255,255,.72);
       color:rgba(31,35,33,.78);
       text-decoration:none;
       white-space:nowrap;
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
     }
     .chip:active{ transform: translateY(1px); }
 
-    /* section base */
+    /* мобильный скролл меню, чтобы не ломалось и не “съедало” место */
+    @media (max-width: 520px){
+      .wrap{ padding-top: 12px; }
+      .brand b{ font-size: 15px; }
+      .chips{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        max-width: 62vw;
+      }
+      .chips::-webkit-scrollbar{ display:none; }
+      .chip{ flex: 0 0 auto; }
+    }
+
+    /* ===== Cards / frames ===== */
     section{ margin-top: 14px; }
     .card{
       background: var(--card);
@@ -93,38 +132,33 @@
       overflow:hidden;
       position:relative;
     }
-    .pad{ padding: 18px; }
 
-    /* framed blocks (use your watercolor frames) */
     .framed{
       background-size: cover;
       background-position: center;
       border-radius: var(--radius);
     }
     .veil{
-      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.56));
+      background: linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.56));
       border:1px solid rgba(255,255,255,.70);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 18px;
     }
 
-    /* HERO */
+    /* ===== HERO ===== */
     .hero{
       border-radius: calc(var(--radius) + 10px);
       overflow:hidden;
       box-shadow: var(--shadow);
       border:1px solid rgba(255,255,255,.75);
       background:
-        linear-gradient(180deg, rgba(255,255,255,.70) 0%, rgba(255,255,255,.12) 45%, rgba(255,255,255,.78) 100%),
+        linear-gradient(180deg, rgba(255,255,255,.35) 0%, rgba(255,255,255,.05) 45%, rgba(255,255,255,.45) 100%),
         url("./hero-mobile.png");
       background-size: cover;
       background-position: 50% 40%;
     }
-    .hero-inner{
-      padding: 56px 16px 22px;
-      text-align:center;
-    }
+    .hero-inner{ padding: 54px 16px 22px; text-align:center; }
     .hero .script{
       font-family:var(--script);
       font-size: 30px;
@@ -304,10 +338,10 @@
   <div class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <b>Евгений & Анжела</b>
+        <b>Евгений ♡ Анжела</b>
         <small>11.07.2026 · Батуми</small>
       </div>
-      <div class="chips">
+      <div class="chips" aria-label="Навигация">
         <a class="chip" href="#schedule">Расписание</a>
         <a class="chip" href="#dress">Дресс-код</a>
         <a class="chip" href="#rsvp">RSVP</a>
@@ -321,7 +355,7 @@
     <section class="hero" id="top" aria-label="Шапка">
       <div class="hero-inner">
         <div class="script">Our day by the sea…</div>
-        <h1>Евгений & Анжела</h1>
+        <h1>Евгений ♡ Анжела</h1>
         <p><b>11 июля 2026</b> · Батуми</p>
 
         <div class="pill-row" aria-label="Ключевые детали">
@@ -356,7 +390,7 @@
         <div class="timeline" aria-label="Расписание дня">
           <div class="t-item">
             <div class="t-time">12:00</div>
-            <div class="t-text"><b>Сбор гостей</b><br/>Встречаемся, обнимаемся, настраиваемся на день 🤍</div>
+            <div class="t-text"><b>Сбор гостей</b><br/>Встречаемся и настраиваемся на день 🤍</div>
           </div>
           <div class="t-item">
             <div class="t-time">12:30–13:30</div>
@@ -368,7 +402,7 @@
           </div>
           <div class="t-item">
             <div class="t-time">16:00</div>
-            <div class="t-text"><b>Банкет</b><br/>Праздник, музыка, тосты и танцы ✨</div>
+            <div class="t-text"><b>Банкет</b><br/>Праздник, музыка и танцы ✨</div>
           </div>
         </div>
       </div>
@@ -378,7 +412,7 @@
     <section id="dress" class="framed" style="background-image:url('./frame-dresscode.png')">
       <div class="veil">
         <div class="h2">Дресс-код</div>
-        <p class="text">Будем рады, если вы поддержите нашу палитру. На сайте — только оттенки кружочками 💚💜</p>
+        <p class="text">Будем рады, если вы поддержите нашу палитру 💚💜</p>
 
         <div class="dots" aria-label="Цветовая палитра">
           <span class="dot" style="background:var(--g1)"></span>
@@ -431,7 +465,7 @@
             <textarea id="notes" name="notes" placeholder="Например: не ем рыбу, аллергия на орехи…"></textarea>
           </div>
 
-          <input type="hidden" name="_subject" value="RSVP — Евгений & Анжела (11.07.2026)" />
+          <input type="hidden" name="_subject" value="RSVP — Евгений ♡ Анжела (11.07.2026)" />
 
           <div class="form-actions">
             <button class="btn primary" type="submit">Отправить</button>
@@ -463,7 +497,7 @@
     </section>
 
     <div class="footer">
-      Евгений & Анжела · 11.07.2026 · Батуми
+      Евгений ♡ Анжела · 11.07.2026 · Батуми
     </div>
   </main>
 
