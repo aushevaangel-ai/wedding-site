@@ -107,16 +107,19 @@
       justify-content:flex-end;
     }
     .chip{
-      font-size:12px;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid rgba(31,35,33,.12);
-      background: rgba(255,255,255,.72);
-      color:rgba(31,35,33,.78);
-      text-decoration:none;
-      white-space:nowrap;
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
+     font-size:12px;
+  padding:8px 14px;
+  border-radius:999px;
+  background: rgba(232, 225, 246, 0.55); /* лаванда */
+  border:1px solid rgba(160, 185, 170, 0.35); /* зелёный */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color:#3a3a3a;
+  text-decoration:none;
+  white-space:nowrap;
+  box-shadow: 0 6px 18px rgba(90, 70, 130, 0.14);
+  transition: all .25s ease;
+}
     .chip:active{ transform: translateY(1px); }
 
     /* мобильный скролл меню, чтобы не ломалось и не “съедало” место */
