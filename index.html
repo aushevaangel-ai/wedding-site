@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Анжела & Евгений — 11.07.2026 — Батуми</title>
+
+  <style>
+    :root{
+      --bg:#fbfaf8;
+      --paper:#ffffffcc;
+      --ink:#2a2a2a;
+      --muted:#6d6a66;
+      --line:#e9e3dd;
+      --accent:#c8a98f;      /* тёплое золото */
+      --accent2:#b8c7d6;     /* голубовато-серый */
+      --shadow: 0 18px 50px rgba(30,30,30,.12);
+      --radius: 22px;
+      --max: 1040px;
+      --serif: ui-serif, "Georgia", "Times New Roman", serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      color:var(--ink);
+      background: radial-gradient(1200px 600px at 50% 0%, #ffffff 0%, var(--bg) 60%, #f4f2ef 100%);
+      font-family: var(--sans);
+      line-height:1.45;
+    }
+
+    a{ color:inherit; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:24px; }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius: calc(var(--radius) + 8px);
+      box-shadow: var(--shadow);
+      border:1px solid rgba(255,255,255,.7);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.75) 0%, rgba(255,255,255,.18) 40%, rgba(255,255,255,.74) 100%),
+        url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2400&q=80");
+      background-size: cover;
+      background-position: 50% 35%;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(900px 420px at 50% 18%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 60%);
+      pointer-events:none;
+    }
+    .hero-inner{
+      position:relative;
+      padding: 70px 28px 32px;
+      text-align:center;
+    }
+    .names{
+      font-family: var(--serif);
+      font-weight: 600;
+      letter-spacing:.5px;
+      font-size: clamp(34px, 4.2vw, 56px);
+      margin: 0 0 8px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.7);
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size: clamp(14px, 1.6vw, 18px);
+    }
+    .sub strong{ color:var(--ink); font-weight:600; }
+    .pill-row{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .pill{
+      padding:10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.85);
+      backdrop-filter: blur(10px);
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .cta-row{
+      margin-top: 18px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      cursor:pointer;
+      border: 1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.82);
+      color: var(--ink);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 38px rgba(0,0,0,.10); }
+    .btn.primary{
+      background: linear-gradient(135deg, #f3e7dc 0%, #ffffff 45%, #e8f0f7 100%);
+      border-color: rgba(200,169,143,.35);
+    }
+    .btn.ghost{ background: rgba(255,255,255,.55); }
+
+    .divider{
+      height:1px;
+      background: linear-gradient(to right, transparent, rgba(200,169,143,.55), transparent);
+      margin: 26px auto 0;
+      max-width: 720px;
+    }
+
+    /* CONTENT CARDS */
+    .grid{
+      display:grid;
+      gap:18px;
+      grid-template-columns: repeat(12, 1fr);
+      margin-top: 18px;
+    }
+    .card{
+      background: var(--paper);
+      border: 1px solid rgba(255,255,255,.75);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 35px rgba(0,0,0,.06);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .card .head{
+      padding: 16px 18px 10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      border-bottom:1px solid rgba(233,227,221,.65);
+      background: linear-gradient(180deg, rgba(255,255,255,.6), rgba(255,255,255,.15));
+    }
+    .card h2{
+      margin:0;
+      font-size: 16px;
+      letter-spacing:.3px;
+      font-weight: 700;
+    }
+    .tag{
+      font-size:12px;
+      color: var(--muted);
+      padding: 6px 10px;
+      border:1px solid rgba(200,169,143,.25);
+      border-radius:999px;
+      background: rgba(255,255,255,.55);
+      white-space:nowrap;
+    }
+    .card .body{ padding: 16px 18px 18px; color:var(--muted); }
+
+    .span-6{ grid-column: span 6; }
+    .span-7{ grid-column: span 7; }
+    .span-5{ grid-column: span 5; }
+    .span-12{ grid-column: span 12; }
+
+    .lead{
+      font-family: var(--serif);
+      font-size: 20px;
+      color: #3a3836;
+      margin: 0 0 6px;
+    }
+    .small{ font-size: 14px; margin:0; }
+
+    /* TIMELINE */
+    .timeline{
+      display:grid;
+      gap:12px;
+      margin-top: 10px;
+    }
+    .t-item{
+      display:flex;
+      gap:12px;
+      padding: 12px 12px;
+      border:1px solid rgba(233,227,221,.8);
+      border-radius: 16px;
+      background: rgba(255,255,255,.55);
+    }
+    .t-time{
+      min-width: 86px;
+      font-weight: 700;
+      color:#3d3a37;
+      font-family: var(--serif);
+    }
+    .t-text b{ color:#3d3a37; }
+    .t-text{ color:var(--muted); }
+
+    /* RSVP */
+    form{ display:grid; gap:12px; }
+    .row{ display:grid; gap:12px; grid-template-columns: 1fr 1fr; }
+    label{ font-size: 13px; color: var(--muted); display:block; margin:0 0 6px; }
+    input, select, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(233,227,221,.95);
+      background: rgba(255,255,255,.75);
+      font: inherit;
+      outline:none;
+    }
+    textarea{ min-height: 92px; resize: vertical; }
+    .form-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top: 2px;
+    }
+    .hint{ font-size: 13px; color: var(--muted); }
+
+    /* FOOTER */
+    .footer{
+      text-align:center;
+      color: var(--muted);
+      padding: 26px 0 8px;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px){
+      .span-6,.span-7,.span-5{ grid-column: span 12; }
+      .row{ grid-template-columns: 1fr; }
+      .hero-inner{ padding: 56px 18px 28px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <h1 class="names">Анжела & Евгений</h1>
+        <p class="sub"><strong>11 июля 2026</strong> · Батуми · утро у моря</p>
+
+        <div class="pill-row" aria-label="Ключевые детали">
+          <div class="pill">Сбор гостей: 10:30</div>
+          <div class="pill">Церемония: 11:00</div>
+          <div class="pill">Дресс-код: светлые, нежные оттенки</div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn primary" onclick="document.querySelector('#rsvp').scrollIntoView({behavior:'smooth'})">
+            Подтвердить присутствие
+          </button>
+          <button class="btn ghost" onclick="document.querySelector('#details').scrollIntoView({behavior:'smooth'})">
+            Посмотреть детали
+          </button>
+        </div>
+
+        <div class="divider" role="presentation"></div>
+      </div>
+    </section>
+
+    <section class="grid" id="details" style="margin-top:18px;">
+      <article class="card span-7">
+        <div class="head">
+          <h2>Приглашение</h2>
+          <span class="tag">романтика · свет · горы</span>
+        </div>
+        <div class="body">
+          <p class="lead">Дорогие друзья!</p>
+          <p class="small">
+            Мы приглашаем вас разделить с нами один из самых важных дней нашей жизни.
+            Будет красиво, тепло и очень по-нашему 🤍
+          </p>
+
+          <div class="timeline" aria-label="Тайминг">
+            <div class="t-item">
+              <div class="t-time">10:30</div>
+              <div class="t-text"><b>Сбор гостей</b><br/>Лёгкий welcome и объятия</div>
+            </div>
+            <div class="t-item">
+              <div class="t-time">11:00</div>
+              <div class="t-text"><b>Церемония</b><br/>У моря, на террасе</div>
+            </div>
+            <div class="t-item">
+              <div class="t-time">12:00+</div>
+              <div class="t-text"><b>Фотографии / поздравления</b><br/>и дальше — по настроению</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card span-5">
+        <div class="head">
+          <h2>Где?</h2>
+          <span class="tag">Батуми</span>
+        </div>
+        <div class="body">
+          <p class="small" style="margin:0 0 10px;">
+            Локация: <b>терраса у моря</b><br/>
+            (точный адрес и точку на карте пришлём ближе к дате)
+          </p>
+          <button class="btn" type="button" onclick="alert('Сюда можно вставить ссылку на Google Maps / 2GIS')">
+            Открыть карту
+          </button>
+          <p class="hint" style="margin:10px 0 0;">*кнопку потом привяжем к реальной ссылке</p>
+        </div>
+      </article>
+
+      <article class="card span-6">
+        <div class="head">
+          <h2>Дресс-код</h2>
+          <span class="tag">пастель · утро</span>
+        </div>
+        <div class="body">
+          <p class="small" style="margin:0 0 10px;">
+            Светлые, нежные оттенки — кремовый, беж, пудра, дымчато-голубой.
+            Без чёрного (если можно) — хочется воздушности.
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <span class="pill">#f3eee7</span>
+            <span class="pill">#e7d6cf</span>
+            <span class="pill">#d7e1ea</span>
+            <span class="pill">#c8a98f</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card span-6" id="rsvp">
+        <div class="head">
+          <h2>RSVP</h2>
+          <span class="tag">ответьте, пожалуйста</span>
+        </div>
+        <div class="body">
+          <form id="rsvpForm">
+            <div class="row">
+              <div>
+                <label for="name">Ваше имя</label>
+                <input id="name" name="name" placeholder="Например: Мария" required />
+              </div>
+              <div>
+                <label for="attendance">Вы придёте?</label>
+                <select id="attendance" name="attendance" required>
+                  <option value="" selected disabled>Выберите…</option>
+                  <option value="yes">Да, буду!</option>
+                  <option value="no">Не получится</option>
+                  <option value="maybe">Пока не уверен(а)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="guests">Сколько вас будет?</label>
+                <input id="guests" name="guests" type="number" min="1" max="10" value="1" />
+              </div>
+              <div>
+                <label for="contact">Контакт (телефон/Telegram)</label>
+                <input id="contact" name="contact" placeholder="@username или +7…" />
+              </div>
+            </div>
+
+            <div>
+              <label for="notes">Комментарий (аллергии/пожелания)</label>
+              <textarea id="notes" name="notes" placeholder="Например: не ем рыбу, люблю острое 🙂"></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn primary" type="submit">Отправить</button>
+              <span class="hint">Сейчас форма показывает пример. Подключим отправку куда скажешь.</span>
+            </div>
+          </form>
+        </div>
+      </article>
+
+      <article class="card span-12">
+        <div class="head">
+          <h2>Контакты</h2>
+          <span class="tag">вопросы / помощь</span>
+        </div>
+        <div class="body">
+          <p class="small" style="margin:0;">
+            Если потерялись, нужны подсказки по дороге или по жилью — пишите нам ❤️
+            <br/>Евгений: <b>+7 …</b> · Анжела: <b>+7 …</b>
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <div class="footer">
+      С любовью, Анжела и Евгений · 11.07.2026 · Батуми
+    </div>
+  </div>
+
+  <script>
+    // Демо-отправка RSVP (пока без сервера)
+    document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      alert(
+        "RSVP принято (демо) ✅\\n\\n" +
+        "Имя: " + (data.name || "") + "\\n" +
+        "Ответ: " + (data.attendance || "") + "\\n" +
+        "Гостей: " + (data.guests || "") + "\\n" +
+        "Контакт: " + (data.contact || "") + "\\n" +
+        "Комментарий: " + (data.notes || "")
+      );
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
