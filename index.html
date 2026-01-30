@@ -35,16 +35,28 @@
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
-    body{
-      margin:0;
-      background:
-        radial-gradient(1100px 700px at 50% -10%, rgba(205,191,232,.30), transparent 60%),
-        radial-gradient(1100px 700px at 20% 10%, rgba(199,210,198,.32), transparent 60%),
-        linear-gradient(180deg, #ffffff, var(--bg));
-      color:var(--ink);
-      font-family:var(--sans);
-      line-height:1.5;
-    }
+   body{
+  margin:0;
+  background:
+    radial-gradient(1200px 800px at 50% -15%,
+      rgba(245, 236, 255, 0.55),
+      transparent 60%),
+    radial-gradient(1000px 700px at 15% 20%,
+      rgba(228, 242, 235, 0.65),
+      transparent 55%),
+    radial-gradient(900px 600px at 85% 30%,
+      rgba(243, 238, 230, 0.8),
+      transparent 60%),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fdfaf7 40%,
+      #fbf7f2 100%
+    );
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.5;
+}
     a{ color:inherit; }
     .wrap{ width:min(720px, 92vw); margin:0 auto; padding: 14px 0 56px; }
 
@@ -125,7 +137,7 @@
     /* ===== Cards / frames ===== */
     section{ margin-top: 14px; }
     .card{
-      background: var(--card);
+      background: rgba(255,255,255,0.82);
       border:1px solid rgba(255,255,255,.70);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
