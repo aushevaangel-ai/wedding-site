@@ -1,710 +1,341 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Евгений ♡ Анжела — 11.07.2026 — Батуми</title>
-  <meta name="description" content="Свадебное приглашение: Евгений и Анжела. 11.07.2026, Батуми." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Евгений & Анжела — 11.07.2026 · Батуми</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#fbfaf8;
-      --ink:#1f2321;
-      --muted:rgba(31,35,33,.68);
-      --card:rgba(255,255,255,.72);
-      --line:rgba(31,35,33,.10);
-      --shadow: 0 16px 44px rgba(15,18,16,.12);
-      --radius: 22px;
-
-      /* палитра кружочков */
-      --g1:#A9B7A6;
-      --g2:#C7D2C6;
-      --g3:#7F8E6E;
-      --p1:#CDBFE8;
-      --p2:#C3B0E0;
-      --p3:#B6A0C8;
-
-      --serif:"Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
-      --sans:"Manrope", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    * {
+      box-sizing: border-box;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      background:
-        radial-gradient(1100px 700px at 50% -10%, rgba(205,191,232,.25), transparent 60%),
-        radial-gradient(1100px 700px at 20% 10%, rgba(199,210,198,.28), transparent 60%),
-        linear-gradient(180deg, #ffffff, var(--bg));
-      color:var(--ink);
-      font-family:var(--sans);
-      line-height:1.5;
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f6f5f2;
+      color: #2a2a2a;
     }
 
-    a{ color:inherit; }
-    .wrap{ width:min(720px, 92vw); margin:0 auto; padding: 12px 0 56px; }
-
-    /* TOPBAR (фикс для iPhone/Telegram: safe-area + две строки) */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(251,250,248,.82);
-      border-bottom:1px solid var(--line);
-      padding-top: env(safe-area-inset-top);
-    }
-    .topbar::before{
-      content:"";
-      position:absolute;
-      inset:-18px;
-      background:
-        radial-gradient(900px 320px at 20% 0%, rgba(205,191,232,.18), transparent 60%),
-        radial-gradient(900px 320px at 80% 0%, rgba(199,210,198,.20), transparent 62%),
-        url("./hero-mobile.png");
-      background-size: cover;
-      background-position: 50% 35%;
-      filter: blur(10px) saturate(1.05);
-      opacity: .14;
-      pointer-events:none;
-    }
-    .topbar-inner{
-      position:relative;
-      width:min(720px, 92vw);
-      margin:0 auto;
-      padding: 10px 0 10px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    .brand{
-      display:flex;
-      flex-direction:column;
-      line-height:1.15;
-      min-width: 170px;
+    /* ---------- HEADER ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(246,245,242,0.9);
+      backdrop-filter: blur(8px);
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .brand b{
-      font-family:var(--serif);
-      letter-spacing:.25px;
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 13px;
+      color: #666;
+      font-family: 'Inter', sans-serif;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      background: #ffffff;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      white-space: nowrap;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      margin: 16px;
+      border-radius: 32px;
+      background: url("hero-mobile.png") center / cover no-repeat;
+      padding: 80px 20px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    .hero .subtitle {
+      font-family: 'Playfair Display', serif;
       font-size: 18px;
-    }
-    .brand small{
-      color:var(--muted);
-      font-size:12px;
+      color: #000;
+      margin-bottom: 12px;
     }
 
-    .chips{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .chip{
-      font-size:12px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.80);
-      color:rgba(31,35,33,.84);
-      text-decoration:none;
-      white-space:nowrap;
-      box-shadow: 0 10px 22px rgba(0,0,0,.05);
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin: 0;
+      color: #000;
     }
 
-    /* ВАЖНО: на мобиле шапку делаем в 2 строки, чтобы ничего не съедалось */
-    @media (max-width: 520px){
-      .topbar-inner{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:8px;
-      }
-      .brand{ min-width: unset; }
-      .chips{
-        width:100%;
-        justify-content:flex-start;
-        flex-wrap:nowrap;
-        overflow-x:auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width:none;
-        padding-bottom: 2px;
-      }
-      .chips::-webkit-scrollbar{ display:none; }
-      .chip{ flex: 0 0 auto; }
+    .hero .date {
+      margin-top: 10px;
+      font-size: 15px;
+      color: #444;
     }
 
-    /* SECTION BASE */
-    section{ margin-top: 14px; }
-
-    /* FRAMED BLOCKS */
-    .framed{
-      background-size: cover;
-      background-position: center;
-      border-radius: var(--radius);
-    }
-    .veil{
-      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.58));
-      border:1px solid rgba(255,255,255,.70);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
+    .hero .badges {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    /* HERO */
-    .hero{
-      border-radius: calc(var(--radius) + 10px);
-      overflow:hidden;
-      box-shadow: var(--shadow);
-      border:1px solid rgba(255,255,255,.75);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.30) 0%, rgba(255,255,255,.05) 45%, rgba(255,255,255,.40) 100%),
-        url("./hero-mobile.png");
-      background-size: cover;
-      background-position: 50% 40%;
-    }
-    .hero-inner{
-      padding: 54px 16px 22px;
-      text-align:center;
+    .badge {
+      background: rgba(255,255,255,0.85);
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-size: 14px;
     }
 
-    /* СДЕЛАЛИ НАДПИСЬ ЧЁРНОЙ (не фиолетовой) */
-    .hero .script{
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 18px;
-      color: rgba(31,35,33,.85);
-      margin:0 0 6px;
-      text-shadow: 0 1px 0 rgba(255,255,255,.6);
+    .hero .buttons {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    /* ИМЕНА — красивый “дорогой” стиль даже на запасном шрифте */
-    .hero h1{
-      font-family: var(--serif);
-      font-size: clamp(34px, 7vw, 52px);
-      font-weight: 700;
-      letter-spacing: .6px;
-      margin: 0 0 6px;
-      text-shadow: 0 1px 0 rgba(255,255,255,.7);
+    .btn {
+      padding: 12px 22px;
+      border-radius: 26px;
+      background: #ffffff;
+      font-weight: 500;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
     }
 
-    .hero p{
-      margin:0;
-      color:var(--muted);
+    /* ---------- SECTIONS ---------- */
+    section {
+      margin: 28px 16px;
+      padding: 28px 20px;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      margin-top: 0;
+      font-size: 26px;
+    }
+
+    /* ---------- INVITATION ---------- */
+    .invitation p {
+      line-height: 1.6;
       font-size: 15px;
     }
 
-    .pill-row{
-      margin-top:14px;
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .pill{
-      padding:10px 12px;
-      border-radius:999px;
-      background: rgba(255,255,255,.82);
-      border:1px solid rgba(255,255,255,.88);
-      backdrop-filter: blur(10px);
-      font-size: 13px;
-      color: rgba(31,35,33,.78);
-      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+    /* ---------- SCHEDULE ---------- */
+    .schedule {
+      background: url("bg-schedule-mountains.png") center / cover no-repeat;
+      position: relative;
+      overflow: hidden;
     }
 
-    .cta{
-      margin-top:14px;
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .btn{
-      cursor:pointer;
-      border: 1px solid rgba(0,0,0,.06);
-      background: rgba(255,255,255,.88);
-      padding: 12px 16px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 13px;
-      color: var(--ink);
-      box-shadow: 0 12px 28px rgba(0,0,0,.08);
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(199,210,198,.55), rgba(205,191,232,.35));
-      border-color: rgba(127,142,110,.20);
+    .schedule::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(4px);
     }
 
-    /* HEADINGS */
-    .h2{
-      font-family:var(--serif);
-      font-size: 20px;
-      margin: 0 0 10px;
-      letter-spacing:.2px;
-    }
-    .lead{
-      font-family:var(--serif);
-      font-size: 18px;
-      margin:0 0 6px;
-      color: rgba(31,35,33,.90);
-    }
-    .text{ margin:0; color:var(--muted); font-size: 14px; }
-
-    /* TIMELINE */
-    .timeline{
-      display:grid;
-      gap:10px;
-      margin-top: 12px;
-    }
-    .t-item{
-      display:flex;
-      gap:12px;
-      padding: 12px;
-      border-radius: 16px;
-      border:1px solid rgba(31,35,33,.10);
-      background: rgba(255,255,255,.74);
-    }
-    .t-time{
-      min-width: 96px;
-      font-family: var(--serif);
-      font-weight: 700;
-      color: rgba(31,35,33,.88);
-    }
-    .t-text{ color:var(--muted); font-size: 14px; }
-    .t-text b{ color: rgba(31,35,33,.88); }
-
-    /* COLOR DOTS */
-    .dots{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top: 12px;
-      align-items:center;
-    }
-    .dot{
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.88);
-      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+    .schedule > * {
+      position: relative;
+      z-index: 1;
     }
 
-    /* RSVP FORM */
-    form{ display:grid; gap:12px; margin-top: 10px; }
-    .row{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
-    @media (max-width: 520px){ .row{ grid-template-columns: 1fr; } }
+    .schedule-item {
+      display: flex;
+      gap: 14px;
+      background: rgba(255,255,255,0.85);
+      padding: 16px 18px;
+      border-radius: 18px;
+      margin-bottom: 12px;
+    }
 
-    label{
-      font-size: 12px;
-      color: rgba(31,35,33,.70);
-      display:block;
-      margin: 0 0 6px;
+    .time {
+      min-width: 90px;
       font-weight: 600;
     }
-    input, select, textarea{
-      width:100%;
-      padding: 12px 12px;
+
+    /* ---------- DRESS CODE ---------- */
+    .colors {
+      display: flex;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .color {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.6);
+    }
+
+    /* ---------- RSVP ---------- */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input, select, textarea {
+      padding: 12px 14px;
       border-radius: 14px;
-      border:1px solid rgba(31,35,33,.12);
-      background: rgba(255,255,255,.84);
-      font: inherit;
-      outline:none;
-    }
-    textarea{ min-height: 100px; resize: vertical; }
-
-    .form-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top: 4px;
-    }
-    .hint{
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .ok{
-      display:none;
-      margin-top: 10px;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(127,142,110,.25);
-      background: rgba(199,210,198,.35);
-      color: rgba(31,35,33,.85);
-      font-size: 13px;
+      border: 1px solid #ddd;
+      font-family: 'Inter', sans-serif;
     }
 
-    /* GUIDE: accordion (сделали выразительнее) */
-    .accordion{ display:grid; gap:10px; margin-top:12px; }
-
-    .acc{
-      border:1px solid rgba(31,35,33,.10);
-      border-radius: 18px;
-      background: rgba(255,255,255,.76);
-      overflow:hidden;
-    }
-    .acc[open]{ box-shadow: 0 14px 32px rgba(0,0,0,.06); }
-
-    .acc-sum{
-      list-style:none;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding: 14px 12px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .acc-sum::-webkit-details-marker{ display:none; }
-
-    /* ИКОНКИ — крупнее, темнее, заметнее */
-    .acc-icon{
-      width: 40px; height: 40px;
-      border-radius: 999px;
-      display:grid;
-      place-items:center;
-      background: linear-gradient(135deg, rgba(199,210,198,.70), rgba(205,191,232,.55));
-      border:1px solid rgba(31,35,33,.10);
-      box-shadow: 0 12px 22px rgba(0,0,0,.08);
-      flex: 0 0 auto;
-    }
-    .acc-icon svg{ width: 20px; height: 20px; color: rgba(31,35,33,.92); }
-    .acc-sum b{ font-family: var(--serif); letter-spacing:.2px; font-size: 16px; }
-    .acc-sub{
-      display:block;
-      font-size: 12px;
-      color: rgba(31,35,33,.62);
-      margin-top: 2px;
+    button {
+      padding: 14px;
+      border-radius: 20px;
+      border: none;
+      background: #2a2a2a;
+      color: #fff;
+      font-size: 15px;
     }
 
-    .acc-badge{
-      margin-left: 6px;
-      font-size: 16px;
-      opacity: .9;
+    /* ---------- FOOTER ---------- */
+    .contacts p {
+      margin: 6px 0;
     }
 
-    .acc-caret{
-      margin-left:auto;
-      color: rgba(31,35,33,.62);
-      transition: transform .18s ease;
-      font-size: 16px;
-    }
-    .acc[open] .acc-caret{ transform: rotate(180deg); }
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 30px;
+      }
 
-    .acc-body{
-      padding: 0 12px 12px 12px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .acc-mini{
-      margin: 8px 0 6px;
-      font-weight: 700;
-      color: rgba(31,35,33,.82);
-      font-family: var(--serif);
-    }
-    .acc-list{ margin:0; padding-left: 18px; }
-    .acc-list li{ margin: 6px 0; }
+      nav {
+        justify-content: center;
+      }
 
-    .acc-note{
-      margin-top: 10px;
-      padding: 10px 10px;
-      border-radius: 14px;
-      border:1px solid rgba(127,142,110,.18);
-      background: rgba(199,210,198,.25);
-      color: rgba(31,35,33,.80);
-      font-style: italic;
-    }
-
-    /* FOOTER */
-    .footer{
-      margin-top: 16px;
-      text-align:center;
-      color: var(--muted);
-      font-size: 12px;
+      .schedule-item {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <b>Евгений ♡ Анжела</b>
-        <small>11.07.2026 · Батуми</small>
-      </div>
 
-      <div class="chips">
-        <a class="chip" href="#schedule">Расписание</a>
-        <a class="chip" href="#dress">Дресс-код</a>
-        <a class="chip" href="#guide">Гид</a>
-        <a class="chip" href="#rsvp">RSVP</a>
-        <a class="chip" href="#contacts">Контакты</a>
-      </div>
-    </div>
+<header>
+  <div class="logo">
+    Евгений & Анжела
+    <small>11.07.2026 · Батуми</small>
+  </div>
+  <nav>
+    <a href="#schedule">Расписание</a>
+    <a href="#dress">Дресс-код</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="subtitle">Our day by the sea…</div>
+  <h1>Евгений ♡ Анжела</h1>
+  <div class="date">11 июля 2026 · Батуми</div>
+
+  <div class="badges">
+    <div class="badge">Сбор гостей: 12:00</div>
+    <div class="badge">Церемония: 12:30</div>
   </div>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero" id="top" aria-label="Шапка">
-      <div class="hero-inner">
-        <div class="script">Our day by the sea…</div>
-        <h1>Евгений ♡ Анжела</h1>
-        <p><b>11 июля 2026</b> · Батуми</p>
+  <div class="buttons">
+    <a href="#rsvp" class="btn">RSVP</a>
+    <a href="#schedule" class="btn">Расписание</a>
+  </div>
+</div>
 
-        <div class="pill-row" aria-label="Ключевые детали">
-          <div class="pill">Сбор гостей: 12:00</div>
-          <div class="pill">Церемония: 12:30</div>
-        </div>
+<section class="invitation">
+  <h2>Приглашение</h2>
+  <p><strong>Дорогие друзья!</strong></p>
+  <p>
+    Мы приглашаем вас разделить с нами один из самых важных дней нашей жизни.
+    Будет красиво, тепло и очень по-нашему 🤍
+  </p>
+</section>
 
-        <div class="cta">
-          <button class="btn primary" onclick="document.querySelector('#rsvp').scrollIntoView({behavior:'smooth'})">RSVP</button>
-          <button class="btn" onclick="document.querySelector('#schedule').scrollIntoView({behavior:'smooth'})">Расписание</button>
-        </div>
-      </div>
-    </section>
+<section id="schedule" class="schedule">
+  <h2>Расписание</h2>
 
-    <!-- INVITATION -->
-    <section id="invitation" class="framed" style="background-image:url('./frame-invitation.png')">
-      <div class="veil">
-        <div class="h2">Приглашение</div>
-        <p class="lead">Дорогие друзья!</p>
-        <p class="text">
-          Мы приглашаем вас разделить с нами один из самых важных дней нашей жизни.
-          Будет красиво, тепло и очень по-нашему 🤍
-        </p>
-      </div>
-    </section>
+  <div class="schedule-item">
+    <div class="time">12:00</div>
+    <div><strong>Сбор гостей</strong></div>
+  </div>
 
-    <!-- SCHEDULE -->
-    <section id="schedule" class="framed" style="background-image:url('./frame-schedule.png')">
-      <div class="veil">
-        <div class="h2">Расписание</div>
+  <div class="schedule-item">
+    <div class="time">12:30–13:30</div>
+    <div><strong>Церемония</strong></div>
+  </div>
 
-        <div class="timeline" aria-label="Расписание дня">
-          <div class="t-item">
-            <div class="t-time">12:00</div>
-            <div class="t-text"><b>Сбор гостей</b><br/>Встречаемся и настраиваемся на день 🤍</div>
-          </div>
-          <div class="t-item">
-            <div class="t-time">12:30–13:30</div>
-            <div class="t-text"><b>Церемония</b><br/>Тёплые слова и самый важный момент</div>
-          </div>
-          <div class="t-item">
-            <div class="t-time">13:30–16:00</div>
-            <div class="t-text"><b>Свободное время</b><br/>Прогулка у моря, фото, отдых и лёгкая перезагрузка перед вечером</div>
-          </div>
-          <div class="t-item">
-            <div class="t-time">16:00</div>
-            <div class="t-text"><b>Банкет</b><br/>Праздник, музыка и танцы ✨</div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div class="schedule-item">
+    <div class="time">13:30–16:00</div>
+    <div><strong>Свободное время</strong></div>
+  </div>
 
-    <!-- DRESS CODE -->
-    <section id="dress" class="framed" style="background-image:url('./frame-dresscode.png')">
-      <div class="veil">
-        <div class="h2">Дресс-код</div>
-        <div class="dots" aria-label="Цветовая палитра">
-          <span class="dot" style="background:var(--g1)"></span>
-          <span class="dot" style="background:var(--g2)"></span>
-          <span class="dot" style="background:var(--g3)"></span>
-          <span class="dot" style="background:var(--p1)"></span>
-          <span class="dot" style="background:var(--p2)"></span>
-          <span class="dot" style="background:var(--p3)"></span>
-        </div>
-      </div>
-    </section>
+  <div class="schedule-item">
+    <div class="time">16:00</div>
+    <div><strong>Банкет</strong></div>
+  </div>
+</section>
 
-    <!-- GUIDE -->
-    <section id="guide" class="framed" style="background-image:url('./frame-schedule.png')">
-      <div class="veil">
-        <div class="h2">Гид по Батуми</div>
-        <p class="text">
-          Если вы прилетаете заранее или остаетесь в Грузии на отдых — вот наши рекомендации 🤍
-        </p>
+<section id="dress">
+  <h2>Дресс-код</h2>
+  <div class="colors">
+    <div class="color" style="background:#6f8f6b;"></div>
+    <div class="color" style="background:#8fae8f;"></div>
+    <div class="color" style="background:#b3a6c9;"></div>
+    <div class="color" style="background:#d2c4e0;"></div>
+  </div>
+</section>
 
-        <div class="accordion">
+<section id="rsvp">
+  <h2>RSVP</h2>
+  <form action="https://formspree.io/f/xnjvzooz" method="POST">
+    <input type="text" name="name" placeholder="Ваше имя" required>
+    <select name="attendance" required>
+      <option value="">Вы придёте?</option>
+      <option>Да, конечно!</option>
+      <option>Не получится</option>
+      <option>Пока не знаю</option>
+    </select>
+    <input type="number" name="guests" placeholder="Сколько вас будет">
+    <input type="text" name="contact" placeholder="Контакт для связи">
+    <textarea name="comment" placeholder="Комментарий / аллергии"></textarea>
+    <button type="submit">Отправить</button>
+  </form>
+</section>
 
-          <details class="acc" open>
-            <summary class="acc-sum">
-              <span class="acc-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M9 18l-6 2V6l6-2 6 2 6-2v14l-6 2-6-2z" stroke="currentColor" stroke-width="2.0" stroke-linejoin="round"/>
-                  <path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span>
-                <b>Что посмотреть</b><span class="acc-badge">🗺️</span>
-                <span class="acc-sub">маршруты, виды, природа</span>
-              </span>
-              <span class="acc-caret" aria-hidden="true">▾</span>
-            </summary>
+<section id="contacts" class="contacts">
+  <h2>Контакты</h2>
+  <p>Женя — @kras_eugene</p>
+  <p>Анжела — @angela_ausheva</p>
+</section>
 
-            <div class="acc-body">
-              <p class="acc-mini">В самом Батуми</p>
-              <ul class="acc-list">
-                <li>Батумский бульвар — прогулка у моря (утром или на закате)</li>
-                <li>Скульптура «Али и Нино»</li>
-                <li>Канатная дорога «Арго» — виды на город</li>
-                <li>Старый город и площадь Пьяцца</li>
-                <li>Ботанический сад Батуми</li>
-              </ul>
-
-              <p class="acc-mini" style="margin-top:10px;">Рядом с Батуми (0,5–2 часа)</p>
-              <ul class="acc-list">
-                <li>Водопад Махунцети</li>
-                <li>Арочный мост царицы Тамары</li>
-                <li>Горная Аджария — серпантины и виды</li>
-                <li>Гонио — древняя крепость и пляж</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="acc">
-            <summary class="acc-sum">
-              <span class="acc-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M7 3v8M10 3v8M7 7h3" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/>
-                  <path d="M14 3v7c0 1.1.9 2 2 2v9" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/>
-                  <path d="M20 3v9c-1.1 0-2-.9-2-2V3" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/>
-                  <path d="M5 21h14" stroke="currentColor" stroke-width="2.0" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span>
-                <b>Что обязательно попробовать</b><span class="acc-badge">🍽️</span>
-                <span class="acc-sub">вкус Грузии</span>
-              </span>
-              <span class="acc-caret" aria-hidden="true">▾</span>
-            </summary>
-
-            <div class="acc-body">
-              <ul class="acc-list">
-                <li>Хачапури по-аджарски</li>
-                <li>Хинкали (классические и с сыром)</li>
-                <li>Чашушули</li>
-                <li>Лобио в глиняном горшочке</li>
-                <li>Аджапсандали</li>
-                <li>Сациви</li>
-                <li>Домашние сыры</li>
-                <li>Чурчхела и пахлава</li>
-              </ul>
-
-              <div class="acc-note">
-                Совет: пробовать лучше в небольших семейных ресторанах — там самые аутентичные вкусы ✨
-              </div>
-            </div>
-          </details>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- RSVP -->
-    <section id="rsvp" class="framed" style="background-image:url('./frame-rsvp.png')">
-      <div class="veil">
-        <div class="h2">RSVP</div>
-        <p class="text">Пожалуйста, заполните форму — ответы придут Анжеле на почту.</p>
-
-        <form id="rsvpForm" action="https://formspree.io/f/xnjvzooz" method="POST">
-          <div class="row">
-            <div>
-              <label for="name">Имя</label>
-              <input id="name" name="name" placeholder="Например: Мария" required />
-            </div>
-            <div>
-              <label for="attendance">Вы придёте?</label>
-              <select id="attendance" name="attendance" required>
-                <option value="" disabled selected>Выберите…</option>
-                <option value="Да, конечно!">Да, конечно!</option>
-                <option value="Не получится">Не получится</option>
-                <option value="Пока точно не знаю">Пока точно не знаю</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row">
-            <div>
-              <label for="guests">Сколько вас будет?</label>
-              <input id="guests" name="guests" type="number" min="1" max="10" value="1" />
-            </div>
-            <div>
-              <label for="contact">Контакт (телефон / почта / Telegram)</label>
-              <input id="contact" name="contact" placeholder="+7… / email / @username" required />
-            </div>
-          </div>
-
-          <div>
-            <label for="notes">Комментарий (пожелания / аллергии)</label>
-            <textarea id="notes" name="notes" placeholder="Например: аллергия на орехи…"></textarea>
-          </div>
-
-          <input type="hidden" name="_subject" value="RSVP — Евгений ♡ Анжела (11.07.2026)" />
-
-          <div class="form-actions">
-            <button class="btn primary" type="submit">Отправить</button>
-            <span class="hint">Если форма не отправилась — обновите страницу и попробуйте ещё раз.</span>
-          </div>
-
-          <div class="ok" id="okBox">Спасибо! Ответ отправлен ✅</div>
-        </form>
-      </div>
-    </section>
-
-    <!-- CONTACTS -->
-    <section id="contacts" class="framed" style="background-image:url('./frame-contacts.png')">
-      <div class="veil">
-        <div class="h2">Контакты</div>
-        <p class="text">Если будут вопросы — пишите нам в Telegram 🤍</p>
-
-        <div class="timeline" style="margin-top:12px;">
-          <div class="t-item">
-            <div class="t-time">@</div>
-            <div class="t-text"><b>Женя</b><br/>kras_eugene</div>
-          </div>
-          <div class="t-item">
-            <div class="t-time">@</div>
-            <div class="t-text"><b>Анжела</b><br/>angela_ausheva</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer">
-      Евгений ♡ Анжела · 11.07.2026 · Батуми
-    </div>
-  </main>
-
-  <script>
-    // UX: показать "Спасибо" без ухода со страницы (Formspree всё равно получает)
-    const form = document.getElementById('rsvpForm');
-    const ok = document.getElementById('okBox');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      try{
-        const res = await fetch(form.action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { "Accept": "application/json" }
-        });
-
-        if(res.ok){
-          ok.style.display = "block";
-          form.reset();
-          const sel = document.getElementById("attendance");
-          if(sel) sel.selectedIndex = 0;
-          setTimeout(()=> ok.style.display="none", 5000);
-          return;
-        }
-      }catch(err){}
-
-      // fallback
-      form.submit();
-    });
-  </script>
 </body>
 </html>
