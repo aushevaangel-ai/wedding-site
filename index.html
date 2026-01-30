@@ -8,17 +8,19 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
     :root{
+      --bg:#fbfaf8;
       --ink:#1f2321;
       --muted:rgba(31,35,33,.68);
+      --card:rgba(255,255,255,.72);
       --line:rgba(31,35,33,.10);
       --shadow: 0 16px 44px rgba(15,18,16,.12);
       --radius: 22px;
 
-      /* Дресс-код (кружочки): зелёные и фиолетовые */
+      /* палитра кружочков (без названий) */
       --g1:#A9B7A6;
       --g2:#C7D2C6;
       --g3:#7F8E6E;
@@ -26,8 +28,8 @@
       --p2:#C3B0E0;
       --p3:#B6A0C8;
 
+      --serif:"Playfair Display", ui-serif, Georgia, serif;
       --sans:"Manrope", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      --name:"Cormorant Garamond", serif;
       --script:"Great Vibes", cursive;
     }
 
@@ -36,22 +38,21 @@
     body{
       margin:0;
       background:
-        radial-gradient(1200px 800px at 50% -15%, rgba(245, 236, 255, 0.55), transparent 60%),
-        radial-gradient(1000px 700px at 15% 20%, rgba(228, 242, 235, 0.65), transparent 55%),
-        radial-gradient(900px 600px at 85% 30%, rgba(243, 238, 230, 0.8), transparent 60%),
-        linear-gradient(180deg, #ffffff 0%, #fdfaf7 40%, #fbf7f2 100%);
+        radial-gradient(1100px 700px at 50% -10%, rgba(205,191,232,.30), transparent 60%),
+        radial-gradient(1100px 700px at 20% 10%, rgba(199,210,198,.32), transparent 60%),
+        linear-gradient(180deg, #ffffff, var(--bg));
       color:var(--ink);
       font-family:var(--sans);
       line-height:1.5;
     }
-    a{ color:inherit; text-decoration:none; }
+
+    a{ color:inherit; }
     .wrap{ width:min(720px, 92vw); margin:0 auto; padding: 14px 0 56px; }
 
-    /* ===== TOPBAR ===== */
+    /* TOPBAR */
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       background: rgba(251,250,248,.70);
       border-bottom:1px solid var(--line);
       overflow:hidden;
@@ -61,8 +62,8 @@
       position:absolute;
       inset:-18px;
       background:
-        radial-gradient(900px 320px at 18% 0%, rgba(205,191,232,.22), transparent 60%),
-        radial-gradient(900px 320px at 82% 0%, rgba(199,210,198,.24), transparent 62%),
+        radial-gradient(900px 320px at 20% 0%, rgba(205,191,232,.22), transparent 60%),
+        radial-gradient(900px 320px at 80% 0%, rgba(199,210,198,.24), transparent 62%),
         url("./hero-mobile.png");
       background-size: cover;
       background-position: 50% 35%;
@@ -74,95 +75,87 @@
       position:relative;
       width:min(720px, 92vw);
       margin:0 auto;
-      padding: 10px 0 10px;
+      padding: 8px 0;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
     }
-    .brand{ display:flex; flex-direction:column; line-height:1.08; }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+      min-width: 160px;
+    }
     .brand b{
-      font-family: var(--name);
-      font-weight: 600;
-      letter-spacing: .4px;
+      font-family:var(--serif);
+      letter-spacing:.2px;
       font-size: 18px;
     }
-    .brand small{ color:var(--muted); font-size:11.5px; }
-
-    /* NAV chips */
+    .brand small{
+      color:var(--muted);
+      font-size:12px;
+    }
     .chips{
       display:flex;
       gap:8px;
       flex-wrap:wrap;
       justify-content:flex-end;
-      align-items:center;
+      max-width: 460px;
     }
-
-    /* Кнопки меню */
     .chip{
       font-size:12px;
-      padding:8px 14px;
+      padding:8px 10px;
       border-radius:999px;
-      background: rgba(232, 225, 246, 0.55);
-      border:1px solid rgba(160, 185, 170, 0.35);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      color:#2f2f2f;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      color:rgba(31,35,33,.78);
+      text-decoration:none;
       white-space:nowrap;
-      box-shadow: 0 6px 18px rgba(90, 70, 130, 0.14);
-      transition: all .25s ease;
+      box-shadow: 0 10px 22px rgba(0,0,0,.05);
     }
-    .chip:hover{
-      background: rgba(220, 210, 240, 0.7);
-      transform: translateY(-1px);
-    }
+    .chip:active{ transform: translateY(1px); }
 
-    /* ✅ ВАРИАНТ 1: на мобилке лента со свайпом, 100% ширины (ничего не пропадает) */
-    @media (max-width: 560px){
-      .topbar-inner{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:10px;
-        padding: 10px 0 12px;
-      }
+    @media (max-width: 520px){
       .chips{
-        width:100%;
         flex-wrap:nowrap;
         overflow-x:auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        justify-content:flex-start;
+        max-width: 58vw;
         padding-bottom: 2px;
-        position:relative;
       }
       .chips::-webkit-scrollbar{ display:none; }
-
-      /* мягкие “края”, чтобы было видно что можно свайпать */
-      .chips::before,
-      .chips::after{
-        content:"";
-        position:sticky;
-        top:0;
-        width:18px;
-        height:36px;
-        flex:0 0 18px;
-        pointer-events:none;
-      }
-      .chips::before{
-        left:0;
-        background: linear-gradient(90deg, rgba(251,250,248,.95), rgba(251,250,248,0));
-      }
-      .chips::after{
-        right:0;
-        background: linear-gradient(270deg, rgba(251,250,248,.95), rgba(251,250,248,0));
-      }
-
-      .chip{ flex:0 0 auto; }
+      .chip{ flex: 0 0 auto; }
+      .brand b{ font-size: 17px; }
     }
 
-    /* ===== HERO ===== */
+    /* SECTION BASE */
     section{ margin-top: 14px; }
+    .card{
+      background: var(--card);
+      border:1px solid rgba(255,255,255,.70);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
 
+    /* FRAMED BLOCKS */
+    .framed{
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--radius);
+    }
+    .veil{
+      background: linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.56));
+      border:1px solid rgba(255,255,255,.70);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    /* HERO */
     .hero{
       border-radius: calc(var(--radius) + 10px);
       overflow:hidden;
@@ -174,21 +167,20 @@
       background-size: cover;
       background-position: 50% 40%;
     }
-    .hero-inner{ padding: 54px 16px 22px; text-align:center; }
-
+    .hero-inner{
+      padding: 56px 16px 22px;
+      text-align:center;
+    }
     .hero .script{
       font-family:var(--script);
       font-size: 30px;
-      color: rgba(15,16,15,.92);
+      color: rgba(142,120,168,.95);
       margin:0 0 6px;
-      text-shadow: 0 1px 0 rgba(255,255,255,.55);
     }
-
     .hero h1{
-      font-family: var(--name);
-      font-weight: 600;
-      letter-spacing: .6px;
-      font-size: clamp(36px, 7.4vw, 54px);
+      font-family:var(--serif);
+      font-size: clamp(34px, 7vw, 52px);
+      letter-spacing:.3px;
       margin: 0 0 6px;
       text-shadow: 0 1px 0 rgba(255,255,255,.7);
     }
@@ -211,7 +203,6 @@
       background: rgba(255,255,255,.78);
       border:1px solid rgba(255,255,255,.85);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       font-size: 13px;
       color: rgba(31,35,33,.74);
       box-shadow: 0 10px 24px rgba(0,0,0,.06);
@@ -241,52 +232,28 @@
       background: linear-gradient(135deg, rgba(199,210,198,.55), rgba(205,191,232,.40));
       border-color: rgba(127,142,110,.20);
     }
-    .btn.secondary{
-      background: rgba(232, 225, 246, 0.55);
-      border-color: rgba(160, 185, 170, 0.25);
-    }
 
-    /* ===== Frames / cards ===== */
-    .framed{
-      border-radius: var(--radius);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.72);
-    }
-
-    .veil{
-      position: relative;
-      z-index: 1;
-      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.58));
-      border-radius: var(--radius);
-      padding: 18px;
-    }
-    @media (max-width: 520px){
-      .framed{ background-position: center 12%; }
-      .veil{ padding: 16px; }
-    }
-
+    /* HEADINGS */
     .h2{
-      font-family: var(--name);
-      font-weight: 600;
-      font-size: 22px;
+      font-family:var(--serif);
+      font-size: 20px;
       margin: 0 0 10px;
-      letter-spacing: .2px;
+      letter-spacing:.2px;
     }
     .lead{
-      font-family: var(--name);
-      font-weight: 600;
+      font-family:var(--serif);
       font-size: 18px;
       margin:0 0 6px;
       color: rgba(31,35,33,.90);
     }
     .text{ margin:0; color:var(--muted); font-size: 14px; }
 
-    /* Timeline */
-    .timeline{ display:grid; gap:10px; margin-top: 12px; }
+    /* TIMELINE */
+    .timeline{
+      display:grid;
+      gap:10px;
+      margin-top: 12px;
+    }
     .t-item{
       display:flex;
       gap:12px;
@@ -296,15 +263,15 @@
       background: rgba(255,255,255,.72);
     }
     .t-time{
-      min-width: 92px;
-      font-family: var(--name);
+      min-width: 96px;
+      font-family: var(--serif);
       font-weight: 700;
       color: rgba(31,35,33,.88);
     }
     .t-text{ color:var(--muted); font-size: 14px; }
     .t-text b{ color: rgba(31,35,33,.88); }
 
-    /* Dress code dots */
+    /* COLOR DOTS */
     .dots{
       display:flex;
       gap:12px;
@@ -320,7 +287,7 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.08);
     }
 
-    /* RSVP form */
+    /* RSVP FORM */
     form{ display:grid; gap:12px; margin-top: 10px; }
     .row{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
     @media (max-width: 520px){ .row{ grid-template-columns: 1fr; } }
@@ -350,7 +317,10 @@
       align-items:center;
       margin-top: 4px;
     }
-    .hint{ font-size: 12px; color: var(--muted); }
+    .hint{
+      font-size: 12px;
+      color: var(--muted);
+    }
     .ok{
       display:none;
       margin-top: 10px;
@@ -362,34 +332,86 @@
       font-size: 13px;
     }
 
-    /* ===== Memo ===== */
-    .memo-wrap{ display:grid; gap:12px; margin-top: 10px; }
-    .memo-actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    .memo-img{
-      width:100%;
-      height:auto;
-      border-radius: 18px;
+    /* GUIDE: accordion */
+    .accordion{ display:grid; gap:10px; margin-top:12px; }
+
+    .acc{
       border:1px solid rgba(31,35,33,.10);
-      box-shadow: 0 18px 40px rgba(0,0,0,.10);
-      background: rgba(255,255,255,.5);
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+      overflow:hidden;
+    }
+    .acc[open]{ box-shadow: 0 14px 32px rgba(0,0,0,.06); }
+
+    .acc-sum{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .acc-sum::-webkit-details-marker{ display:none; }
+
+    .acc-icon{
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      background: linear-gradient(135deg, rgba(199,210,198,.55), rgba(205,191,232,.40));
+      border:1px solid rgba(31,35,33,.08);
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      flex: 0 0 auto;
+    }
+    .acc-icon svg{ width: 18px; height: 18px; color: rgba(31,35,33,.78); }
+
+    .acc-sum b{ font-family: var(--serif); letter-spacing:.2px; }
+    .acc-sub{
+      display:block;
+      font-size: 12px;
+      color: rgba(31,35,33,.62);
+      margin-top: 1px;
     }
 
-    .footer{ margin-top: 16px; text-align:center; color: var(--muted); font-size: 12px; }
+    .acc-caret{
+      margin-left:auto;
+      color: rgba(31,35,33,.55);
+      transition: transform .18s ease;
+      font-size: 16px;
+    }
+    .acc[open] .acc-caret{ transform: rotate(180deg); }
 
-    /* ===== PDF print only memo ===== */
-    @media print{
-      body{ background:#fff !important; }
-      .topbar, .hero, #invitation, #schedule, #dress, #rsvp, #contacts, .footer{ display:none !important; }
-      #memo{ display:block !important; margin:0 !important; box-shadow:none !important; border:none !important; }
-      #memo .veil{ background:#fff !important; padding:0 !important; }
-      .memo-actions{ display:none !important; }
-      .memo-img{
-        border:none !important;
-        border-radius:0 !important;
-        box-shadow:none !important;
-        width:100% !important;
-      }
-      @page{ margin: 10mm; }
+    .acc-body{
+      padding: 0 12px 12px 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .acc-mini{
+      margin: 8px 0 6px;
+      font-weight: 700;
+      color: rgba(31,35,33,.82);
+      font-family: var(--serif);
+    }
+    .acc-list{ margin:0; padding-left: 18px; }
+    .acc-list li{ margin: 6px 0; }
+
+    .acc-note{
+      margin-top: 10px;
+      padding: 10px 10px;
+      border-radius: 14px;
+      border:1px solid rgba(127,142,110,.18);
+      background: rgba(199,210,198,.25);
+      color: rgba(31,35,33,.78);
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    .footer{
+      margin-top: 16px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 12px;
     }
   </style>
 </head>
@@ -401,11 +423,11 @@
         <b>Евгений ♡ Анжела</b>
         <small>11.07.2026 · Батуми</small>
       </div>
-      <div class="chips" aria-label="Навигация">
+      <div class="chips">
         <a class="chip" href="#schedule">Расписание</a>
         <a class="chip" href="#dress">Дресс-код</a>
+        <a class="chip" href="#guide">Гид</a>
         <a class="chip" href="#rsvp">RSVP</a>
-        <a class="chip" href="#memo">Памятка</a>
         <a class="chip" href="#contacts">Контакты</a>
       </div>
     </div>
@@ -413,13 +435,13 @@
 
   <main class="wrap">
     <!-- HERO -->
-    <section class="hero" id="top">
+    <section class="hero" id="top" aria-label="Шапка">
       <div class="hero-inner">
         <div class="script">Our day by the sea…</div>
         <h1>Евгений ♡ Анжела</h1>
         <p><b>11 июля 2026</b> · Батуми</p>
 
-        <div class="pill-row">
+        <div class="pill-row" aria-label="Ключевые детали">
           <div class="pill">Сбор гостей: 12:00</div>
           <div class="pill">Церемония: 12:30</div>
         </div>
@@ -448,22 +470,19 @@
       <div class="veil">
         <div class="h2">Расписание</div>
 
-        <div class="timeline">
+        <div class="timeline" aria-label="Расписание дня">
           <div class="t-item">
             <div class="t-time">12:00</div>
             <div class="t-text"><b>Сбор гостей</b><br/>Встречаемся и настраиваемся на день 🤍</div>
           </div>
-
           <div class="t-item">
             <div class="t-time">12:30–13:30</div>
             <div class="t-text"><b>Церемония</b><br/>Тёплые слова и самый важный момент</div>
           </div>
-
           <div class="t-item">
             <div class="t-time">13:30–16:00</div>
             <div class="t-text"><b>Свободное время</b><br/>Прогулка у моря, фото, отдых и лёгкая перезагрузка перед вечером</div>
           </div>
-
           <div class="t-item">
             <div class="t-time">16:00</div>
             <div class="t-text"><b>Банкет</b><br/>Праздник, музыка и танцы ✨</div>
@@ -476,6 +495,8 @@
     <section id="dress" class="framed" style="background-image:url('./frame-dresscode.png')">
       <div class="veil">
         <div class="h2">Дресс-код</div>
+        <p class="text">Будем рады, если вы поддержите нашу палитру 💚💜</p>
+
         <div class="dots" aria-label="Цветовая палитра">
           <span class="dot" style="background:var(--g1)"></span>
           <span class="dot" style="background:var(--g2)"></span>
@@ -483,6 +504,90 @@
           <span class="dot" style="background:var(--p1)"></span>
           <span class="dot" style="background:var(--p2)"></span>
           <span class="dot" style="background:var(--p3)"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUIDE -->
+    <section id="guide" class="framed" style="background-image:url('./frame-schedule.png')">
+      <div class="veil">
+        <div class="h2">Гид по Батуми</div>
+        <p class="text">
+          Если вы прилетаете заранее или остаетесь в Грузии на отдых — вот наши рекомендации 🤍
+        </p>
+
+        <div class="accordion">
+
+          <details class="acc" open>
+            <summary class="acc-sum">
+              <span class="acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M9 18l-6 2V6l6-2 6 2 6-2v14l-6 2-6-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span>
+                <b>Что посмотреть</b>
+                <span class="acc-sub">маршруты, виды, природа</span>
+              </span>
+              <span class="acc-caret" aria-hidden="true">▾</span>
+            </summary>
+
+            <div class="acc-body">
+              <p class="acc-mini">В самом Батуми</p>
+              <ul class="acc-list">
+                <li>Батумский бульвар — прогулка у моря (утром или на закате)</li>
+                <li>Скульптура «Али и Нино»</li>
+                <li>Канатная дорога «Арго» — виды на город</li>
+                <li>Старый город и площадь Пьяцца</li>
+                <li>Ботанический сад Батуми</li>
+              </ul>
+
+              <p class="acc-mini" style="margin-top:10px;">Рядом с Батуми (0,5–2 часа)</p>
+              <ul class="acc-list">
+                <li>Водопад Махунцети</li>
+                <li>Арочный мост царицы Тамары</li>
+                <li>Горная Аджария — серпантины и виды</li>
+                <li>Гонио — древняя крепость и пляж</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="acc">
+            <summary class="acc-sum">
+              <span class="acc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M7 3v8M10 3v8M7 7h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M14 3v7c0 1.1.9 2 2 2v9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M20 3v9c-1.1 0-2-.9-2-2V3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M5 21h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span>
+                <b>Что обязательно попробовать</b>
+                <span class="acc-sub">вкус Грузии</span>
+              </span>
+              <span class="acc-caret" aria-hidden="true">▾</span>
+            </summary>
+
+            <div class="acc-body">
+              <ul class="acc-list">
+                <li>Хачапури по-аджарски</li>
+                <li>Хинкали (классические и с сыром)</li>
+                <li>Чашушули</li>
+                <li>Лобио в глиняном горшочке</li>
+                <li>Аджапсандали</li>
+                <li>Сациви</li>
+                <li>Домашние сыры</li>
+                <li>Чурчхела и пахлава</li>
+              </ul>
+
+              <div class="acc-note">
+                Совет: пробовать лучше в небольших семейных ресторанах — там самые аутентичные вкусы ✨
+              </div>
+            </div>
+          </details>
+
         </div>
       </div>
     </section>
@@ -538,24 +643,6 @@
       </div>
     </section>
 
-    <!-- MEMO -->
-    <section id="memo" class="framed" style="background-image:url('./frame-invitation.png')">
-      <div class="veil">
-        <div class="h2">Памятка для гостей</div>
-        <p class="text">Можно посмотреть здесь или скачать себе 🤍</p>
-
-        <div class="memo-wrap">
-          <div class="memo-actions">
-            <a class="btn secondary" href="./memo.png" download="Памятка_для_гостей_Евгений_Анжела.png">Скачать PNG</a>
-            <button class="btn primary" type="button" onclick="downloadMemoPDF()">Скачать PDF</button>
-          </div>
-
-          <img class="memo-img" src="./memo.png" alt="Памятка для гостей — Евгений и Анжела, Батуми">
-          <div class="hint">PDF откроется через «Печать» → «Сохранить как PDF» (это нормально для телефона и компьютера).</div>
-        </div>
-      </div>
-    </section>
-
     <!-- CONTACTS -->
     <section id="contacts" class="framed" style="background-image:url('./frame-contacts.png')">
       <div class="veil">
@@ -565,7 +652,7 @@
         <div class="timeline" style="margin-top:12px;">
           <div class="t-item">
             <div class="t-time">@</div>
-            <div class="t-text"><b>Евгений</b><br/>kras_eugene</div>
+            <div class="t-text"><b>Женя</b><br/>kras_eugene</div>
           </div>
           <div class="t-item">
             <div class="t-time">@</div>
@@ -581,7 +668,7 @@
   </main>
 
   <script>
-    // RSVP: показать успешную отправку не уходя со страницы
+    // UX: показать "Спасибо" без ухода со страницы (Formspree всё равно получает)
     const form = document.getElementById('rsvpForm');
     const ok = document.getElementById('okBox');
 
@@ -605,13 +692,9 @@
         }
       }catch(err){}
 
-      form.submit(); // fallback
+      // fallback
+      form.submit();
     });
-
-    // Памятка PDF: печать → сохранить как PDF
-    function downloadMemoPDF(){
-      window.print();
-    }
   </script>
 </body>
 </html>
