@@ -398,8 +398,7 @@
         <div class="h2">RSVP</div>
         <p class="text">Пожалуйста, заполните форму — ответы придут Анжеле на почту.</p>
 
-        <!-- IMPORTANT: replace XXXXYYYY with your Formspree form ID -->
-        <form id="rsvpForm" action="https://formspree.io/f/XXXXYYYY" method="POST">
+        <form id="rsvpForm" action="https://formspree.io/f/xnjvzooz" method="POST">
           <div class="row">
             <div>
               <label for="name">Имя</label>
@@ -432,7 +431,6 @@
             <textarea id="notes" name="notes" placeholder="Например: не ем рыбу, аллергия на орехи…"></textarea>
           </div>
 
-          <!-- Helps email formatting -->
           <input type="hidden" name="_subject" value="RSVP — Евгений & Анжела (11.07.2026)" />
 
           <div class="form-actions">
@@ -475,7 +473,6 @@
     const ok = document.getElementById('okBox');
 
     form.addEventListener('submit', async (e) => {
-      // allow normal submit if fetch fails
       e.preventDefault();
 
       try{
@@ -488,7 +485,6 @@
         if(res.ok){
           ok.style.display = "block";
           form.reset();
-          // keep attendance placeholder after reset
           const sel = document.getElementById("attendance");
           if(sel) sel.selectedIndex = 0;
           setTimeout(()=> ok.style.display="none", 5000);
