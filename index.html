@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- ШРИФТЫ (Playfair -> Cormorant Garamond) -->
+  <!-- ШРИФТЫ -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -171,7 +171,6 @@
       text-align:center;
     }
 
-    /* СДЕЛАЛИ НАДПИСЬ ЧЁРНОЙ (не фиолетовой) */
     .hero .script{
       font-family: var(--serif);
       font-style: italic;
@@ -181,7 +180,6 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.6);
     }
 
-    /* ИМЕНА — красивый “дорогой” стиль даже на запасном шрифте */
     .hero h1{
       font-family: var(--serif);
       font-size: clamp(34px, 7vw, 52px);
@@ -338,7 +336,7 @@
       font-size: 13px;
     }
 
-    /* GUIDE: accordion (сделали выразительнее) */
+    /* GUIDE: accordion */
     .accordion{ display:grid; gap:10px; margin-top:12px; }
 
     .acc{
@@ -360,7 +358,6 @@
     }
     .acc-sum::-webkit-details-marker{ display:none; }
 
-    /* ИКОНКИ — крупнее, темнее, заметнее */
     .acc-icon{
       width: 40px; height: 40px;
       border-radius: 999px;
@@ -425,6 +422,37 @@
       color: var(--muted);
       font-size: 12px;
     }
+
+    /* ======= LUX UPGRADE: ORGANIZATIONAL DETAILS ONLY ======= */
+    .details-note{
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(31,35,33,.10);
+      background: linear-gradient(135deg, rgba(199,210,198,.28), rgba(205,191,232,.18));
+      color: rgba(31,35,33,.78);
+      font-size: 13px;
+    }
+    .details .t-item{
+      align-items:flex-start;
+      background: rgba(255,255,255,.78);
+    }
+    .details .t-icon{
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+      font-size: 20px;
+      background: linear-gradient(135deg, rgba(199,210,198,.70), rgba(205,191,232,.55));
+      border:1px solid rgba(31,35,33,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+    }
+    .details .t-text b{
+      font-family: var(--serif);
+      letter-spacing: .15px;
+    }
   </style>
 </head>
 
@@ -440,7 +468,7 @@
         <a class="chip" href="#schedule">Расписание</a>
         <a class="chip" href="#dress">Дресс-код</a>
         <a class="chip" href="#guide">Гид</a>
-        <a class="chip" href="#details">Орг. детали</a>
+        <a class="chip" href="#details">Организационные детали</a>
         <a class="chip" href="#rsvp">RSVP</a>
         <a class="chip" href="#contacts">Контакты</a>
       </div>
@@ -505,17 +533,18 @@
       </div>
     </section>
 
-    <!-- ORGANIZATIONAL DETAILS -->
-    <section id="details" class="framed" style="background-image:url('./frame-contacts.png')">
+    <!-- ORGANIZATIONAL DETAILS (LUX) -->
+    <section id="details" class="framed details" style="background-image:url('./frame-contacts.png')">
       <div class="veil">
         <div class="h2">Организационные детали</div>
-        <p class="text">
-          Мы будем очень рады видеть вас в Батуми 🤍 Ниже — важные детали по проживанию и поездке.
-        </p>
+        <p class="text">Так мы сможем всё организовать максимально комфортно для вас 🤍</p>
+        <div class="details-note">
+          Мы очень ценим, что вы прилетаете из разных стран и городов — спасибо, что будете рядом в этот день.
+        </div>
 
-        <div class="timeline" aria-label="Организационные детали" style="margin-top:12px;">
+        <div class="timeline" aria-label="Организационные детали">
           <div class="t-item">
-            <div class="t-time">🏨</div>
+            <div class="t-icon" aria-hidden="true">🏨</div>
             <div class="t-text">
               <b>Проживание</b><br/>
               Мы предоставляем проживание на даты: <b>заезд 10.07</b>, <b>свадьба 11.07</b>, <b>выезд 12.07</b>.
@@ -523,7 +552,7 @@
           </div>
 
           <div class="t-item">
-            <div class="t-time">✈️</div>
+            <div class="t-icon" aria-hidden="true">✈️</div>
             <div class="t-text">
               <b>Авиабилеты</b><br/>
               Перелёт/дорога до Батуми и обратно — <b>за счёт гостей</b>.
@@ -531,10 +560,10 @@
           </div>
 
           <div class="t-item">
-            <div class="t-time">🌿</div>
+            <div class="t-icon" aria-hidden="true">🌿</div>
             <div class="t-text">
               <b>Если планируете отпуск</b><br/>
-              Если вы хотите остаться в Грузии дольше — будем только рады 🤍
+              Хотите остаться в Грузии дольше — будем только рады 🤍
               Проживание после <b>12.07</b> гости планируют самостоятельно (мы с удовольствием подскажем варианты).
             </div>
           </div>
